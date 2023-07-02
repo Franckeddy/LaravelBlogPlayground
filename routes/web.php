@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\MainController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -15,25 +17,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainController::class, 'index'])->name('index');
 
-Route::prefix('/blog')->name('blog.')->group(function () {
-    Route::get('/', static function (Request $request) {
-        return Post::paginate(25);
-    })->name('index');
+Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function () {
+    Route::get('/','index')->name('index');
 
-    Route::get('/{slug}-{id}', static function (string $slug, int $id, Request $request) {
-        $post = Post::findOrFail($id);
-        if ($post->slug !== $slug) {
-            return to_route('blog.show', [
-                'slug' => $post->slug,
-                'id' => $post->id,
-            ]);
-        }
-        return $post;
-    })->where([
+    Route::get('/{slug}-{id}','show')->where([
         'slug' => '[a-z0-9\-]+',
         'id' => '[0-9]+',
     ])->name('show');
