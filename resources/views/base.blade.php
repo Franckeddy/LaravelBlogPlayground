@@ -13,7 +13,6 @@
     $routeName = request()->route()->getName();
 @endphp
 
-
 <nav class="flex-center bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center">
@@ -30,13 +29,18 @@
                     <a @class(['nav-link', 'active' => str_starts_with($routeName, 'blog.')]) href="{{ route('blog.index') }}">Blog</a>
                 </li>
                 <li>
-                    <a @class(['nav-link', 'active' => str_starts_with($routeName, 'welcome.')]) href="/">Home </a>
+                    <a @class(['nav-link', 'active' => str_starts_with($routeName, 'welcome.')]) href="{{ route('blog.create') }}">New </a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 <article class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     @yield('content')
 </article>
 </body>
