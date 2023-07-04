@@ -1,3 +1,4 @@
+<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 <form method="post" action="" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     @csrf
     @method($post->id ? 'PATCH' : 'POST')
@@ -58,3 +59,4 @@
         @endif
     </button>
 </form>
+</div>
