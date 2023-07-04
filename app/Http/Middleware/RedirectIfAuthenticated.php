@@ -8,12 +8,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class RedirectIfAuthenticated
-{
+class RedirectIfAuthenticated {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param Request $request
+     * @param \Closure(Request): (Response) $next
+     * @param string ...$guards
+     * @return Response
      */
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {

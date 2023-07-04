@@ -37,11 +37,11 @@
             </ul>
             <div class="flex items-center justify-center mt-4 md:mt-0">
                 @auth
-                    {{ \Illuminate\Support\Facades\Auth::user()->name }} : Vous êtes connécté
+                    {{ \Illuminate\Support\Facades\Auth::user()->name }}
                     <form action="{{ route('auth.logout') }}" method="post">
                         @method('DELETE')
                         @csrf
-                        <button type="submit">Se Déconnecter</button>
+                        <button type="submit">: Se Déconnecter</button>
                     </form>
                 @endauth
                 @guest

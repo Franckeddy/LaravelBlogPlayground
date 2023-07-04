@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 
-class MainController extends Controller
-{
+class MainController extends Controller {
     /**
      * @return View
      */

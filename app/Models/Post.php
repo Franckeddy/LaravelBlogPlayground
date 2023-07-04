@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @mixin IdeHelperPost
  */
-class Post extends Model
-{
+class Post extends Model {
     use HasFactory;
 
     /**

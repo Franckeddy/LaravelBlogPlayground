@@ -10,8 +10,7 @@ class FormPostRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
-    {
+    public function authorize(): bool {
         return true;
     }
 
@@ -20,8 +19,7 @@ class FormPostRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    public function rules(): array
-    {
+    public function rules(): array {
         return [
             'title' => ['required', 'min:3'],
             'content' => ['required'],
@@ -31,8 +29,7 @@ class FormPostRequest extends FormRequest
         ];
     }
 
-    public function prepareForValidation(): void
-    {
+    public function prepareForValidation(): void {
         $this->merge([
             'slug' => $this->input('slug') ?: \Str::slug($this->input('title')),
         ]);
