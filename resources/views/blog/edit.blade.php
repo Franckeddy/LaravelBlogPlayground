@@ -3,7 +3,7 @@
 @section('title', 'Modifier un article')
 
 @section('content')
-    <div class="w-full max-w-xs">
+    <div class="w-full">
         @include('blog.form')
     </div>
 @endsection

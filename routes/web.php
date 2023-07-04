@@ -31,3 +31,12 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
     ])->name('show');
 });
 
+Route::prefix('/cat')->name('cat.')->controller(\App\Http\Controllers\CategoryController::class)->group(function () {
+    Route::get('/','index')->name('index');
+    Route::get('/new','create')->name('create');
+    Route::post('/new','store')->name('store');
+    Route::get('/{category}/edit','edit')->name('edit');
+    Route::patch('/{category}/edit','update')->name('update');
+    Route::get('/{category}','show')->name('show');
+});
+
