@@ -4,7 +4,13 @@
 
 @section('content')
     <div class="bg-white py-8">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title }}</h5>
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title }}</h5>
+            @if($post->image)
+                <div class="relative mt-8 flex items-center gap-x-4">
+                    <img src="{{ $post->imageUrl() }}" alt="" class="object-cover h-150 w-150 rounded-full bg-gray-50">
+                </div>
+            @endif
                 <p class="font-normal text-gray-700 dark:text-gray-400">
                     Categorie:
                     <span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
